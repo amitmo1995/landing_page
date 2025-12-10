@@ -6,7 +6,7 @@
     <title>Amit Moshe — AI & Software Engineering</title>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
         /* ===========================
@@ -81,12 +81,18 @@
             padding: 0 30px;
         }
 
+        /* Signature style logo */
         .nav-logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -1px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
             color: #fff;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--accent-fitness);
+            transform: scale(1.05) rotate(-1deg);
         }
 
         .nav-links {
@@ -274,6 +280,7 @@
             p { font-size: 1rem; }
             .nav-links a { margin-left: 20px; }
         }
+
     </style>
 </head>
 
@@ -331,8 +338,8 @@
         </div>
     </nav>
 
+    <!-- FADE IN SCRIPT -->
     <script>
-        // Fade-in on scroll
         const faders = document.querySelectorAll('.fade');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -343,8 +350,8 @@
         }, {threshold: 0.2});
         faders.forEach(el => observer.observe(el));
 
-        // Make sure the page always starts at the top
-        window.scrollTo(0, 0);
+        // Ensure page always starts at top
+        window.scrollTo(0,0);
     </script>
 
 </body>

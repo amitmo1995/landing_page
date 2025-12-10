@@ -3,270 +3,346 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Amit — AI & Software</title>
+    <title>Amit Moshe — AI & Software Engineering</title>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
     <style>
-        /* BASE RESET & TYPOGRAPHY */
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Space Grotesk', Inter, system-ui;}
+        /* ===========================
+           BASE RESET & TYPOGRAPHY
+        =========================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+            background-color: #07070a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
         :root {
             --color-bg-dark: #07070a;
             --color-text-light: #e0e0e0;
             --color-text-faded: #a0a0a0;
             --color-border: #1a1a1a;
-            /* Fitness Accent (PINK) */
-            --color-accent-fitness: #ff69b4; 
-            /* Marketing Accent (Pure Yellow) */
-            --color-accent-marketing: #FFD700; 
-            /* ✅ New: Accent for Navigation Hover (RED) */
-            --color-accent-nav-hover: #ff0000; 
+
+            --accent-fitness: #ff69b4; /* Pink */
+            --accent-marketing: #FFD700; /* Yellow */
+            --accent-nav-hover: #ff0000; /* Red */
         }
-        body{background:var(--color-bg-dark);color:var(--color-text-light);scroll-behavior:smooth;}
 
-        /* ANIMATIONS */
-        @keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);} }
-        .fade{animation:fadeUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;opacity:0;}
+        /* ===========================
+           ANIMATIONS
+        =========================== */
+        @keyframes fadeUp {
+            from {opacity: 0; transform: translateY(40px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
 
-        /* NAVIGATION BAR */
-        nav{
-            position:fixed; 
-            bottom:0; 
-            top:auto; 
-            left:0;right:0;
-            height:70px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:rgba(15, 15, 20, 0.7); 
-            backdrop-filter:blur(20px);
-            border-top:1px solid rgba(255, 255, 255, 0.08); 
+        .fade {
+            opacity: 0;
+            animation: fadeUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* ===========================
+           NAVIGATION
+        =========================== */
+        nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(15, 15, 20, 0.7);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
-            z-index:20;
+            z-index: 20;
         }
-        nav .inner{max-width:1100px;width:100%;display:flex;justify-content:space-between;align-items:center;padding:0 30px;}
-        .nav-logo{
-            font-family:'Space Grotesk', sans-serif;
-            font-size:1.6rem;
-            font-weight:700;
-            letter-spacing:-1px;
+
+        nav .nav-container {
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .nav-logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -1px;
             color: #fff;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
         }
-        .nav-links{
+
+        .nav-links {
             display: flex;
             align-items: center;
-            border-left: 1px solid rgba(255, 255, 255, 0.1); 
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
             padding-left: 20px;
         }
-        .nav-links a{
+
+        .nav-links a {
             position: relative;
-            margin-left:30px;
-            color:var(--color-text-faded);
-            text-decoration:none;
-            font-weight:500;
-            font-size:1rem;
+            margin-left: 30px;
+            color: var(--color-text-faded);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
             padding: 0 5px;
-            transition:color 0.2s ease;
+            transition: color 0.2s ease;
         }
-        .nav-links a:hover{
-            /* Keeping text white-ish for better contrast, but you could change this to red if preferred */
-            color:var(--color-text-light);
+
+        .nav-links a:hover {
+            color: var(--color-text-light);
         }
+
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -25px;
+            bottom: -5px;
             left: 0;
             width: 0%;
             height: 3px;
-            /* ✅ Updated to the new Red Accent variable */
-            background: var(--color-accent-nav-hover); 
+            background: var(--accent-nav-hover);
             transition: width 0.3s ease;
             border-radius: 2px;
         }
+
         .nav-links a:hover::after {
             width: 100%;
         }
 
-
-        /* SECTIONS */
-        section{
-            min-height:95vh;
-            padding:100px 24px 100px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            border-bottom:1px solid var(--color-border);
-        }
-        .wrap{max-width:900px;width:100%;}
-        h1{font-size:3.2rem;font-weight:700;margin-bottom:18px;line-height:1.1;}
-        p{font-size:1.15rem;line-height:1.65;color:var(--color-text-faded);max-width:650px;}
-
-        /* COLORS & ACCENTS */
-        #hero{
-            background:radial-gradient(ellipse at top, #101015 0%, var(--color-bg-dark) 60%); 
-            min-height:100vh;
-            padding-bottom: 140px; 
-        }
-        
-        /* FITNESS SECTION: PINK THEME - Visible Gradient */
-        #fitness{
-            background:radial-gradient(circle at right bottom, rgba(255, 105, 180, 0.2) 0%, transparent 40%), var(--color-bg-dark);
+        /* ===========================
+           SECTIONS
+        =========================== */
+        section {
+            min-height: 95vh;
+            padding: 100px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid var(--color-border);
         }
 
-        /* MARKETING SECTION: PURE YELLOW GRADIENT VISIBILITY */
-        #marketing{
-            background:radial-gradient(circle at right bottom, rgba(225, 255, 0, 0.2) 0%, transparent 40%), var(--color-bg-dark);
+        .container {
+            max-width: 900px;
+            width: 100%;
         }
 
-        #contact{background:var(--color-bg-dark);}    
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
 
-        /* HERO SECTION SPECIFIC */
-        .hero-title{font-size:4.5rem;margin-bottom:10px;font-weight:800;letter-spacing:-2px;}
-        .hero-subtitle{font-size:1.45rem;line-height:1.6;color:var(--color-text-light);max-width:700px;margin:0 auto;}
-        .hero-subtitle strong {font-weight:700;}
+        p {
+            font-size: 1.15rem;
+            color: var(--color-text-faded);
+            max-width: 650px;
+        }
 
-        /* BUTTON STYLES (Kept) */
-        .btn{
-            display:inline-flex;
-            align-items:center;
+        /* ===========================
+           HERO SECTION
+        =========================== */
+        #hero {
+            background: radial-gradient(ellipse at top, #101015 0%, var(--color-bg-dark) 60%);
+            min-height: 100vh;
+            padding-bottom: 140px;
+            text-align: center;
+        }
+
+        .hero-avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #222;
+            box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.6), 0 0 30px rgba(0,0,0,0.6);
+            margin-bottom: 30px;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.45rem;
+            line-height: 1.6;
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto 15px auto;
+        }
+
+        .hero-subtitle strong {
+            font-weight: 700;
+        }
+
+        .hero-contact a {
+            color: var(--color-text-light);
+            text-decoration: none;
+        }
+
+        /* ===========================
+           ACCENT SECTIONS
+        =========================== */
+        #fitness {
+            background: radial-gradient(circle at right bottom, rgba(255, 105, 180, 0.2) 0%, transparent 40%), var(--color-bg-dark);
+        }
+
+        #marketing {
+            background: radial-gradient(circle at right bottom, rgba(255, 215, 0, 0.2) 0%, transparent 40%), var(--color-bg-dark);
+        }
+
+        /* ===========================
+           BUTTONS
+        =========================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
             gap: 10px;
-            margin-top:25px;
-            padding:14px 30px;
-            border-radius:30px;
-            text-decoration:none;
-            font-weight:600;
-            font-size:1rem;
-            transition:all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            background:transparent;
-            text-shadow:0 0 5px rgba(255, 255, 255, 0.3);
+            margin-top: 25px;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-decoration: none;
         }
 
-        /* PRIMARY BUTTON (For Hero Section) */
         .btn-primary {
             color: var(--color-text-light);
             border: 2px solid var(--color-text-light);
-            box-shadow: 0 0 0 rgba(0,0,0,0);
         }
+
         .btn-primary:hover {
             color: var(--color-bg-dark);
             background: var(--color-text-light);
             border-color: var(--color-text-light);
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
-        
-        /* ACCENT BUTTONS */
-        /* Fitness (PINK) */
-        .btn-accent-fitness {
-            color: var(--color-accent-fitness);
-            border: 2px solid var(--color-accent-fitness);
+
+        .btn-fitness {
+            color: var(--accent-fitness);
+            border: 2px solid var(--accent-fitness);
             box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
         }
-        .btn-accent-fitness:hover {
+
+        .btn-fitness:hover {
             color: #fff;
-            background: var(--color-accent-fitness);
-            box-shadow: 0 0 30px rgba(255, 105, 105, 0.7);
+            background: var(--accent-fitness);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
         }
 
-        /* Marketing (Pure Yellow) */
-        .btn-accent-marketing {
-            color: var(--color-accent-marketing);
-            border: 2px solid var(--color-accent-marketing);
+        .btn-marketing {
+            color: var(--accent-marketing);
+            border: 2px solid var(--accent-marketing);
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
-        .btn-accent-marketing:hover {
+
+        .btn-marketing:hover {
             color: var(--color-bg-dark);
-            background: var(--color-accent-marketing);
+            background: var(--accent-marketing);
             box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
         }
-        
-        /* Responsive Adjustments */
+
+        /* ===========================
+           RESPONSIVE
+        =========================== */
         @media (max-width: 768px) {
-            h1{font-size:2.5rem;}
-            .hero-title{font-size:3.5rem;}
-            .hero-subtitle{font-size:1.15rem;}
-            p{font-size:1rem;}
-            .nav-links a {margin-left:20px;}
+            h1 { font-size: 2.5rem; }
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.15rem; }
+            p { font-size: 1rem; }
+            .nav-links a { margin-left: 20px; }
         }
     </style>
 </head>
+
 <body>
-    
+
+    <!-- HERO SECTION -->
     <section id="hero">
-        <div class="wrap fade" style="text-align:center;">
-            <div style="display:flex;justify-content:center;margin-bottom:30px;">
-                <img src="avatar.png" alt="Amit Avatar" 
-                    style="width:220px;height:220px;border-radius:50%;object-fit:cover;
-                           border:2px solid #222;
-                           /* Keeps the red neon glow you set */
-                           box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.6), 0 0 30px rgba(0,0,0,0.6);" 
-                />
-            </div>
+        <div class="container fade">
+            <img src="avatar.png" alt="Amit Avatar" class="hero-avatar">
             <h1 class="hero-title">Amit Moshe</h1>
             <p class="hero-subtitle">
-                An AI Specialist Software Engineer focused on building intelligent systems for the following domains:
-                <br>
+                AI Specialist & Software Engineer creating intelligent systems for:
                 <strong>Fitness</strong> • <strong>Marketing</strong> • <strong>Automation</strong>
             </p>
-            <a class="btn btn-primary" href="#contact">Let's Connect</a>
+            <p class="hero-subtitle" style="color: #a0a0a0;">
+                Collaborating on AI, software projects, or consulting opportunities.
+            </p>
+            <p class="hero-subtitle hero-contact">
+                📧 <a href="mailto:amitmo1995@gmail.com">amitmo1995@gmail.com</a>
+            </p>
         </div>
     </section>
 
+    <!-- FITNESS SECTION -->
     <section id="fitness">
-        <div class="wrap fade">
-            <h1 style="color:var(--color-accent-fitness);">Fitness & lyfestyle</h1>
+        <div class="container fade">
+            <h1 style="color: var(--accent-fitness);">Fitness & Lifestyle</h1>
             <p>
-                For lyfestyle, performance, and health development: 
-                AI-driven workout planner, nutrition advisor, and progress tracking applications.
+                AI-powered workout planning, nutrition guidance, and progress tracking to boost performance and health.
             </p>
-            <a class="btn btn-accent-fitness" href="#">
-                Explore Fitness & Lyfestyle tools <span style="font-size:1.1em;">→</span>
-            </a>
+            <a href="#" class="btn btn-fitness">Explore Fitness Tools →</a>
         </div>
     </section>
 
+    <!-- MARKETING SECTION -->
     <section id="marketing">
-        <div class="wrap fade">
-            <h1 style="color:var(--color-accent-marketing);">Marketing Tools</h1>
+        <div class="container fade">
+            <h1 style="color: var(--accent-marketing);">Marketing Tools</h1>
             <p>
-                Smart marketing tools and AI-driven analytics for better trading.
+                Smart marketing tools and AI-driven analytics for actionable insights and better performance.
             </p>
-            <a href="https://huggingface.co/spaces/amitmo1995/stocks-tech-analysis" class="btn btn-accent-marketing" href="#">
-                Explore Smart Marketing tools <span style="font-size:1.1em;">→</span>
-            </a>
+            <a href="https://huggingface.co/spaces/amitmo1995/stocks-tech-analysis" class="btn btn-marketing">Explore Marketing Tools →</a>
         </div>
     </section>
 
-    <section id="contact" style="min-height:70vh;">
-        <div class="wrap fade">
-            <h1>✉️ Get In Touch</h1>
-            <p>Reach out for collaborations, consulting, or creative ideas on AI and engineering projects.</p>
-            <p style="margin-top:30px;font-size:1.3rem;font-weight:600;color:var(--color-text-light);">
-                📧 <a href="mailto:amitmo1995@gmail.com" style="color:var(--color-text-light); text-decoration:none;">amitmo1995@gmail.com</a>
-            </p>
-        </div>
-    </section>
-    
+    <!-- NAVIGATION -->
     <nav>
-        <div class="inner">
+        <div class="nav-container">
             <div class="nav-logo">Amit Moshe</div>
             <div class="nav-links">
                 <a href="#fitness">Fitness</a>
                 <a href="#marketing">Marketing</a>
-                <a href="#contact">Contact</a>
+                <a href="#hero">Contact</a>
             </div>
         </div>
     </nav>
 
+    <!-- FADE IN SCRIPT -->
     <script>
-        // Fade-in on scroll
         const faders = document.querySelectorAll('.fade');
-        const observer = new IntersectionObserver((entries)=>{
-            entries.forEach(entry=>{
-                if(entry.isIntersecting){ entry.target.style.opacity = 1; }
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.style.opacity = 1;
+                }
             });
-        },{threshold:0.2});
-        faders.forEach(el=>observer.observe(el));
+        }, {threshold: 0.2});
+        faders.forEach(el => observer.observe(el));
     </script>
+
 </body>
 </html>

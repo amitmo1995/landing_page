@@ -331,8 +331,8 @@
         </div>
     </nav>
 
-    <!-- FADE IN SCRIPT -->
     <script>
+        // Fade-in on scroll
         const faders = document.querySelectorAll('.fade');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -342,6 +342,9 @@
             });
         }, {threshold: 0.2});
         faders.forEach(el => observer.observe(el));
+
+        // Make sure the page always starts at the top
+        window.scrollTo(0, 0);
     </script>
 
 </body>

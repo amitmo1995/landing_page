@@ -299,6 +299,28 @@
             p { font-size: 1rem; }
             .nav-links a { margin-left: 15px; }
         }
+        /* Disabled button state */
+        .btn-disabled {
+            color: #555 !important;
+            border-color: #333 !important;
+            background: transparent !important;
+            cursor: not-allowed !important;
+            box-shadow: none !important;
+            position: relative;
+            opacity: 0.7;
+            pointer-events: none; /* Prevents clicking */
+        }
+
+        /* "Coming Soon" badge */
+        .badge-development {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-fitness);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
     </style>
 </head>
 
@@ -325,11 +347,17 @@
     <!-- FITNESS SECTION -->
     <section id="fitness">
         <div class="container fade">
-            <h1 style="color: var(--accent-fitness);">Fitness & Lifestyle</h1>
+            <span class="badge-development">In Development</span>
+            
+            <h1 style="color: var(--accent-fitness); opacity: 0.8;">Fitness & Lifestyle</h1>
             <p>
                 AI-powered workout planning, nutrition guidance, and progress tracking to boost performance and health.
             </p>
-            <a href="#" class="btn btn-fitness">Explore Fitness Tools →</a>
+            
+            <a href="javascript:void(0)" class="btn btn-fitness btn-disabled">
+                Coming Soon 
+                <span style="font-size: 0.8rem; margin-left: 5px; opacity: 0.6;">(Under Construction)</span>
+            </a>
         </div>
     </section>
 
